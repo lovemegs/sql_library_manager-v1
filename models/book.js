@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  }
+  };
   Book.init({
     title: {
       type: DataTypes.STRING,
@@ -23,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: 'Please provide a value for "title"'
-        },
-      },
+        }
+      }
     },
     author: {
       type: DataTypes.STRING,
@@ -35,8 +35,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: 'Please provide a value for "author"'
-        },
-      },
+        }
+      }
     },
     genre: {
       type: DataTypes.STRING,

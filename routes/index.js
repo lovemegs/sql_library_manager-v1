@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models').Book;
+const Sequelize = require('sequelize');
 
 // Handler function
 function asyncHandler(cb) {
@@ -36,14 +37,15 @@ router.post('/books/new', asyncHandler(async (req, res) => {
 }));
 
 
-// // GET book id
-// router.get('/books/:id', asyncHandler(async (req, res) => {
+// GET book id
+router.get('/books/:id', asyncHandler(async (req, res) => {
+  const book = await Book.findByPk(req.params.id);
+  res.render('update-book', { book, title: 'Update Book' })
+}));
+// POST book id
+router.post('/books/:id', asyncHandler(async (req, res) => {
 
-// });
-// // POST book id
-// router.post('/books/new', async (req, res) => {
-
-// });
+}));
 
 // // POST delete book
 // router.post(() => {
