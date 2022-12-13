@@ -54,7 +54,7 @@ router.get('/books/:id', asyncHandler(async (req, res) => {
   if (book) {
     res.render('update-book', { book, title: 'Update Book' })
   } else {
-    res.status(404);
+    res.status(404).render('page-not-found');
   }
 }));
 // POST updated book info in the database
@@ -66,7 +66,7 @@ router.post('/books/:id', asyncHandler(async (req, res) => {
       await book.update(req.body);
       res.redirect('/books');
     } else {
-      res.status(404);
+      res.sendStatus(404);
     }
   } catch (error) {
       if (error.name === 'SequelizeValidationError') {
@@ -87,7 +87,7 @@ router.post('/books/:id/delete', asyncHandler(async (req, res) => {
     await book.destroy();
     res.redirect('/books');
   } else {
-    res.status(404);
+    res.sendStatus(404);
   }
 }));
 

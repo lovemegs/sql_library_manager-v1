@@ -43,8 +43,8 @@ app.use((req, res, next) => {
   const err = new Error();
   err.status = 404;
   err.message = 'Sorry, the route could not be found';
-  res.render('page-not-found', { error });
-  next(err);
+  res.render('page-not-found', { err });
+  next();
 });
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
@@ -55,6 +55,7 @@ app.use((err, req, res, next) => {
     res.render('error', { err });
   }
 });
+
 
 
 module.exports = app;
